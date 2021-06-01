@@ -80,7 +80,9 @@ export const TableComponent: React.FC = () => {
             );
           })
         ) : (
-          <TableRow>PRESS THE BUTTON TO SEE USERS</TableRow>
+          <TableRowData style={{ justifyContent: "center" }}>
+            PRESS THE RETRIEVE BUTTON OR CHANGE FILTERS
+          </TableRowData>
         )}
       </Table>
     </TableContainer>
@@ -94,6 +96,7 @@ const TableContainer = styled.div`
   flex-direction: column;
   background-color: white;
   flex-grow: 2;
+  box-shadow: 0px 0px 10px lightgray;
 
   @media (max-width: 850px) {
     width: 100%;

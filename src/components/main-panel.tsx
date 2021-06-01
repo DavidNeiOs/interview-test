@@ -84,6 +84,7 @@ const Panel = styled.div`
   flex-grow: 1;
   min-width: 180px;
   align-self: flex-start;
+  box-shadow: 0px 0px 10px lightgray;
 
   @media (max-width: 850px) {
     width: 100%;
@@ -115,7 +116,7 @@ const Input = styled.input`
 
 const Button = styled.button`
   background-color: #52a27e;
-  padding: 10px 20px;
+  padding: 12px 20px;
   border: none;
   border-radius: 20px;
   color: white;
