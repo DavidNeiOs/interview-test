@@ -12,6 +12,7 @@
     "start:server": "node server/server.js"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "faker": "^4.1.0",
     "fastify": "^2.14.1",
     "fastify-cors": "^3.0.3",

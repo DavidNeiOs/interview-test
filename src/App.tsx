@@ -1,23 +1,60 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 
-const API_URL = 'http://localhost:8099'
+import { UsersProvider } from "./usersContext";
+import { User } from "./types/user";
+import { Layout } from "./layout/layout";
+import { MainPanel as Panel } from "./components/main-panel";
+import { TableComponent as Table } from "./components/table";
 
 function App() {
+  const [users, setUsers] = useState<User[]>([]);
+  const [min, setMin] = useState("");
+  const [minError, setMinError] = useState("");
+  const [max, setMax] = useState("");
+  const [maxError, setMaxError] = useState("");
+  const [loadingUsers, setLoadingUsers] = useState(false);
+  const [loadedUsers, setLoadedUsers] = useState(false);
+  const [searchName, setSearchName] = useState("");
+
   return (
-    <div className="App">
-      <h1>Planned Test</h1>
-      <div>
-        <button type="button">Retrieve Users</button>
-      </div>
-      <div>
-        <h2>Users</h2>
-        min: <input name="minAge" value="0" type="number" />
-        max: <input name="maxAge" value="100" type="number" />
-        <button type="button">Filter by age</button>
-      </div>
-    </div>
+    <UsersProvider
+      value={{
+        users,
+        min,
+        max,
+        minError,
+        maxError,
+        loadingUsers,
+        loadedUsers,
+        searchName,
+        setUsers,
+        setMin,
+        setMax,
+        setMinError,
+        setMaxError,
+        setLoadingUsers,
+        setLoadedUsers,
+        setSearchName,
+      }}
+    >
+      <Layout subtite="Users">
+        <MainContainer>
+          <Panel />
+          <Table />
+        </MainContainer>
+      </Layout>
+    </UsersProvider>
   );
 }
+
+const MainContainer = styled.div`
+  display: flex;
+
+  @media (max-width: 850px) {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+`;
 
 export default App;
